@@ -22,9 +22,22 @@ class ShoppingCart:
     def total_price(self):
         total_price = 0
         for item in self.item_list:
-            total_price += item.price
-            
+            total_price += item.price     
         return total_price
+
+    def print_item_list(self):
+        receipt = ""
+        for item in self.item_list:
+            receipt += f"{item.name}".ljust(26, " ") + f"EUR  {item.price:.2f}\n"
+        return receipt.replace(".", ",").strip()
+    
+    def print_receipt(self):
+        receipt = self.print_item_list()
+        receipt += f"\n\nTOTAL                     EUR  {self.total_price():.2f}"
+        return receipt.replace(".", ",")
+
+    def get_item_count(self, item_name:str):
+        pass
 
 class UnderflowError(Exception):
     pass

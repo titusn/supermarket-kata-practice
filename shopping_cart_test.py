@@ -51,3 +51,35 @@ def test_given_shopping_cart_with_2_items_total_price_is_their_price_sum(shoppin
     shopping_cart.add(carrot)
     
     assert shopping_cart.total_price() == 0.90
+
+def test_given_shopping_cart_with_stick_when_printing_receipt_it_should_contain_item_and_price(shopping_cart):
+    stick = Item("Stick", 0.50)
+    
+    shopping_cart.add(stick)
+
+    assert shopping_cart.print_item_list() == "Stick                     EUR  0,50"
+
+def test_given_shopping_cart_with_carrot_when_printing_receipt_it_should_contain_item_and_price(shopping_cart):
+    stick = Item("Carrot", 0.40)
+    
+    shopping_cart.add(stick)
+
+    assert shopping_cart.print_item_list() == "Carrot                    EUR  0,40"
+
+def test_given_shopping_cart_with_two_items_when_printing_receipt_it_should_contain_item_and_price(shopping_cart):
+    stick = Item("Stick", 0.50)
+    carrot = Item("Carrot", 0.40)
+    
+    shopping_cart.add(stick)
+    shopping_cart.add(carrot)
+
+    assert shopping_cart.print_item_list() == "Stick                     EUR  0,50\nCarrot                    EUR  0,40"
+
+def test_given_shopping_cart_with_two_items_receipt_contains_total_price(shopping_cart):
+    stick = Item("Stick", 0.50)
+    carrot = Item("Carrot", 0.40)
+    
+    shopping_cart.add(stick)
+    shopping_cart.add(carrot)
+
+    assert shopping_cart.print_receipt() == "Stick                     EUR  0,50\nCarrot                    EUR  0,40\n\nTOTAL                     EUR  0,90"
