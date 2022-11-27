@@ -28,7 +28,7 @@ class ShoppingCart:
     def print_item_list(self):
         receipt = ""
         for item in self.item_list:
-            receipt += f"{item.name}".ljust(26, " ") + f"EUR  {item.price:.2f}\n"
+            receipt += f"{item.name:<26}EUR  {item.price:.2f}\n"
         return receipt.replace(".", ",").strip()
     
     def print_receipt(self):
