@@ -73,7 +73,8 @@ def test_given_shopping_cart_with_two_items_when_printing_receipt_it_should_cont
     shopping_cart.add(stick)
     shopping_cart.add(carrot)
 
-    assert shopping_cart.print_item_list() == "Stick                     EUR  0,50\nCarrot                    EUR  0,40"
+    assert shopping_cart.print_item_list() == "\n".join(("Stick                     EUR  0,50",
+                                                         "Carrot                    EUR  0,40"))
 
 def test_given_shopping_cart_with_two_items_receipt_contains_total_price(shopping_cart):
     stick = Item("Stick", 0.50)
@@ -82,4 +83,6 @@ def test_given_shopping_cart_with_two_items_receipt_contains_total_price(shoppin
     shopping_cart.add(stick)
     shopping_cart.add(carrot)
 
-    assert shopping_cart.print_receipt() == "Stick                     EUR  0,50\nCarrot                    EUR  0,40\n\nTOTAL                     EUR  0,90"
+    assert shopping_cart.print_receipt() == "\n".join(("Stick                     EUR  0,50",
+                                                       "Carrot                    EUR  0,40",
+                                                     "\nTOTAL                     EUR  0,90"))
